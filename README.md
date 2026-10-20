@@ -2,7 +2,7 @@
 
 Arquivos:
 - `index.html`: o convite
-- `ilustracao.jpg`: a ilustração
+- `aquarela.jpg`: a ilustração
 - `apps-script.gs`: código da planilha que guarda confirmações e palpites
 
 ## 1. Criar a planilha (uns 5 minutos)
@@ -35,7 +35,7 @@ Depois apague essa linha de teste na planilha.
 
 ## Observações
 - O placar mostra só a contagem de palpites. Os nomes ficam apenas na planilha, que só você vê.
-- A prévia do link no WhatsApp usa `https://axipeto.github.io/bebe/ilustracao.jpg`. Se o Pages
+- A prévia do link no WhatsApp usa `https://axipeto.github.io/bebe/aquarela.jpg`. Se o Pages
   publicar em outro endereço, ajuste a tag `og:image` no `index.html`.
 - Se mudar o código do Apps Script depois, publique de novo em
   **Implantar → Gerenciar implantações → editar → Nova versão**.
