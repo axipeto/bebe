@@ -53,26 +53,28 @@ h1 .f{color:var(--pink)} h1 .m{color:var(--blue)} h1 .ou{font-size:.45em;color:v
 .place a{display:inline-block;margin-top:8px;color:var(--ink-soft);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;text-underline-offset:4px}
 .wave{width:90px;height:12px;stroke:var(--pink);fill:none;stroke-width:1.2;stroke-linecap:round}
 form{display:flex;flex-direction:column;gap:18px;width:100%}
-label.field{font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:-10px}
-input[type=text]{font:inherit;font-size:16px;text-align:center;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 4px;outline:none}
-input[type=text]:focus{border-bottom-color:var(--blue)}
+.form-panel{background:#fff;border-color:#ddd8d4;box-shadow:0 14px 34px -22px rgba(90,100,112,.45)}
+label.field{font-size:13px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:-8px}
+input[type=text]{font:inherit;font-size:17px;font-weight:400;text-align:center;border:1.5px solid #d3cdc9;border-radius:14px;background:#fff;color:var(--ink);padding:14px 12px;outline:none}
+input[type=text]:focus{border-color:#7fa8cc}
 input::placeholder{color:var(--ink-soft)}
 .votes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.vote{font:inherit;font-size:15px;color:var(--ink);border:1px solid transparent;border-radius:999px;padding:14px 8px;cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:2px;align-items:center}
+.vote{font:inherit;font-size:17px;font-weight:400;color:var(--ink);border:1.5px solid transparent;border-radius:999px;padding:14px 8px;cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:2px;align-items:center}
 .vote small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
-.vote.girl{background:var(--pink-wash)} .vote.boy{background:var(--blue-wash)}
+.vote.girl{background:#f9dfe5;border-color:#ecb8c2} .vote.boy{background:#dde9f5;border-color:#a8c6e0}
+.vote.girl[aria-pressed=true]{background:#e59aaa;color:#fff} .vote.boy[aria-pressed=true]{background:#86acd0;color:#fff}
 .vote.girl[aria-pressed=true]{border-color:var(--pink);box-shadow:0 0 0 4px rgba(236,184,194,.22)}
 .vote.boy[aria-pressed=true]{border-color:var(--blue);box-shadow:0 0 0 4px rgba(168,198,224,.25)}
 .vote:focus-visible,.send:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .send:disabled{opacity:.6;cursor:wait}
-.send{font:inherit;font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);background:linear-gradient(90deg,var(--pink-wash),var(--blue-wash));border:1px solid var(--line);border-radius:999px;padding:16px;cursor:pointer}
+.send{font:inherit;font-size:13px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:#fff;background:var(--ink);border:0;border-radius:999px;padding:16px;cursor:pointer}
 .att{display:flex;flex-direction:column;gap:10px;text-align:left}
-.att legend{font-size:15px;font-weight:300;margin-bottom:4px;text-align:center;width:100%}
+.att legend{font-size:16px;font-weight:400;color:var(--ink);margin-bottom:4px;text-align:center;width:100%}
 .att{border:0;padding:0;margin:0}
-.opt{font:inherit;font-size:14px;color:var(--ink);background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:16px;padding:12px 16px;cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s}
-.opt[aria-pressed=true]{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(181,220,216,.3)}
+.opt{font:inherit;font-size:15px;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid #d3cdc9;border-radius:16px;padding:12px 16px;cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s}
+.opt[aria-pressed=true]{background:#e4f3f1;border-color:#7fbfb8;box-shadow:0 0 0 4px rgba(181,220,216,.3)}
 .opt:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.msg{font-size:13px;color:var(--ink-soft);margin:0}
+.msg{font-size:14px;color:var(--ink);margin:0}
 .msg:empty{display:none}
 .tally{width:100%;display:flex;flex-direction:column;gap:10px}
 .bar{display:grid;grid-template-columns:70px 1fr 28px;gap:10px;align-items:center;font-size:13px;font-variant-numeric:tabular-nums;text-align:left}
@@ -155,10 +157,10 @@ input::placeholder{color:var(--ink-soft)}
     </div>
   </section>
 
-  <section class="panel">
+  <section class="panel form-panel">
     <form id="rsvp" novalidate>
       <label class="field" for="nome">Seu nome</label>
-      <input type="text" id="nome" placeholder="Escreva seu nome aqui" autocomplete="name" maxlength="60">
+      <input type="text" id="nome" autocomplete="name" maxlength="60">
       <div class="votes" role="group" aria-label="Seu palpite">
         <button type="button" class="vote girl" id="v-menina" data-v="menina" aria-pressed="false">Menina</button>
         <button type="button" class="vote boy" id="v-menino" data-v="menino" aria-pressed="false">Menino</button>
