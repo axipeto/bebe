@@ -53,7 +53,7 @@ h1 .f{color:var(--pink)} h1 .m{color:var(--blue)} h1 .ou{font-size:.45em;color:v
 .place a{display:inline-block;margin-top:8px;color:var(--ink-soft);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;text-underline-offset:4px}
 .wave{width:90px;height:12px;stroke:var(--pink);fill:none;stroke-width:1.2;stroke-linecap:round}
 form{display:flex;flex-direction:column;gap:18px;width:100%}
-label.q{font-size:20px;font-weight:200}
+label.field{font-size:11px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:-10px}
 input[type=text]{font:inherit;font-size:16px;text-align:center;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 4px;outline:none}
 input[type=text]:focus{border-bottom-color:var(--blue)}
 input::placeholder{color:var(--ink-soft)}
@@ -157,8 +157,8 @@ input::placeholder{color:var(--ink-soft)}
 
   <section class="panel">
     <form id="rsvp" novalidate>
-      <label class="q" for="nome">Deixe seu palpite</label>
-      <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" maxlength="60">
+      <label class="field" for="nome">Seu nome</label>
+      <input type="text" id="nome" placeholder="Escreva seu nome aqui" autocomplete="name" maxlength="60">
       <div class="votes" role="group" aria-label="Seu palpite">
         <button type="button" class="vote girl" id="v-menina" data-v="menina" aria-pressed="false">Menina</button>
         <button type="button" class="vote boy" id="v-menino" data-v="menino" aria-pressed="false">Menino</button>
