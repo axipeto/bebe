@@ -37,5 +37,6 @@ Depois apague essa linha de teste na planilha.
 - O placar mostra só a contagem de palpites. Os nomes ficam apenas na planilha, que só você vê.
 - A prévia do link no WhatsApp usa `https://axipeto.github.io/bebe/aquarela.jpg`. Se o Pages
   publicar em outro endereço, ajuste a tag `og:image` no `index.html`.
+- A coluna **Presença** mostra "vai" ou "não vai". Use o filtro da planilha para contar quantas pessoas esperar.
 - Se mudar o código do Apps Script depois, publique de novo em
   **Implantar → Gerenciar implantações → editar → Nova versão**.

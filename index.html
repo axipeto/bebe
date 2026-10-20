@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta property="og:title" content="Chá Revelação · Menina ou menino?">
-<meta property="og:description" content="24 de outubro de 2026, 16h, no Ateliê Neshamah, Vila Velha. Confirme sua presença e deixe seu palpite.">
+<meta property="og:description" content="24 de outubro de 2026, 16h, no Ateliê Neshamah, Vila Velha. Confirme sua presença e deixe seu palpite, mesmo que não possa ir.">
 <meta property="og:image" content="https://axipeto.github.io/bebe/aquarela.jpg">
 <title>Chá Revelação · Menina ou menino?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,6 +66,12 @@ input::placeholder{color:var(--ink-soft)}
 .vote:focus-visible,.send:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .send:disabled{opacity:.6;cursor:wait}
 .send{font:inherit;font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);background:linear-gradient(90deg,var(--pink-wash),var(--blue-wash));border:1px solid var(--line);border-radius:999px;padding:16px;cursor:pointer}
+.att{display:flex;flex-direction:column;gap:10px;text-align:left}
+.att legend{font-size:15px;font-weight:300;margin-bottom:4px;text-align:center;width:100%}
+.att{border:0;padding:0;margin:0}
+.opt{font:inherit;font-size:14px;color:var(--ink);background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:16px;padding:12px 16px;cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s}
+.opt[aria-pressed=true]{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(181,220,216,.3)}
+.opt:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 .msg{font-size:13px;color:var(--ink-soft);margin:0}
 .msg:empty{display:none}
 .tally{width:100%;display:flex;flex-direction:column;gap:10px}
@@ -151,13 +157,18 @@ input::placeholder{color:var(--ink-soft)}
 
   <section class="panel">
     <form id="rsvp" novalidate>
-      <label class="q" for="nome">Confirme sua presença</label>
+      <label class="q" for="nome">Deixe seu palpite</label>
       <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" maxlength="60">
       <div class="votes" role="group" aria-label="Seu palpite">
         <button type="button" class="vote girl" id="v-menina" data-v="menina" aria-pressed="false">Menina</button>
         <button type="button" class="vote boy" id="v-menino" data-v="menino" aria-pressed="false">Menino</button>
       </div>
-      <button type="submit" class="send" id="enviar">Confirmar</button>
+      <fieldset class="att" role="group" aria-label="Você vai ao chá?">
+        <legend>Você vai ao chá?</legend>
+        <button type="button" class="opt" id="p-sim" data-p="sim" aria-pressed="false">Vou estar lá!</button>
+        <button type="button" class="opt" id="p-nao" data-p="nao" aria-pressed="false">Não vou conseguir ir, mas quero palpitar</button>
+      </fieldset>
+      <button type="submit" class="send" id="enviar">Enviar</button>
       <p class="msg" id="msg" aria-live="polite"></p>
     </form>
     <div class="tally" id="tally">
@@ -203,7 +214,11 @@ if(configurado){
   document.getElementById('tally-msg').textContent='Placar ainda não conectado à planilha.';
 }
 
-let palpite=null;
+let palpite=null, presenca=null;
+document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{
+  presenca=b.dataset.p;
+  document.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-pressed',x===b));
+}));
 document.querySelectorAll('.vote').forEach(b=>b.addEventListener('click',()=>{
   palpite=b.dataset.v;
   document.querySelectorAll('.vote').forEach(x=>x.setAttribute('aria-pressed',x===b));
@@ -211,16 +226,19 @@ document.querySelectorAll('.vote').forEach(b=>b.addEventListener('click',()=>{
 document.getElementById('rsvp').addEventListener('submit',async e=>{
   e.preventDefault();
   const nome=document.getElementById('nome').value.trim(), msg=document.getElementById('msg'), btn=document.getElementById('enviar');
-  if(!nome){msg.textContent='Escreva seu nome para confirmar.';return}
+  if(!nome){msg.textContent='Escreva seu nome.';return}
   if(!palpite){msg.textContent='Escolha seu palpite: menina ou menino.';return}
+  if(!presenca){msg.textContent='Conte para a gente se você vai ao chá.';return}
   if(!configurado){msg.textContent='A confirmação ainda não está conectada à planilha.';return}
   btn.disabled=true; msg.textContent='Enviando…';
   try{
-    const d=await chamar({action:'confirmar',nome,palpite});
+    const d=await chamar({action:'confirmar',nome,palpite,presenca});
     if(!d.ok) throw new Error(d.erro||'erro');
     mostrarPlacar(d);
-    msg.textContent='Obrigado, '+nome.split(' ')[0]+'! Sua presença está confirmada.';
+    const pn=nome.split(' ')[0];
+    msg.textContent=presenca==='sim'?'Obrigado, '+pn+'! Presença confirmada e palpite registrado. Te esperamos dia 24!':'Obrigado, '+pn+'! Seu palpite foi registrado. Vamos sentir sua falta!';
     document.getElementById('nome').value='';
+    palpite=presenca=null;document.querySelectorAll('.vote,.opt').forEach(x=>x.setAttribute('aria-pressed','false'));
   }catch(err){
     msg.textContent='Não foi possível enviar agora. Tente de novo em instantes.';
   }finally{btn.disabled=false}
