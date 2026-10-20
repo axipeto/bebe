@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="Chá Revelação · Menina ou menino?">
+<meta property="og:description" content="24 de outubro de 2026, 16h, no Ateliê Neshamah, Vila Velha. Confirme sua presença e deixe seu palpite.">
+<meta property="og:image" content="https://axipeto.github.io/bebe/aquarela.jpg">
+<title>Chá Revelação · Menina ou menino?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap">
+<style>
+/* Layout: papel quase branco com manchas de aquarela azul e rosa bem diluídas; uma coluna estreita e centralizada, com a foto recortada no centro e desenhos finos do mar ao redor */
+:root{
+  --paper:#fdfcfb; --ink:#5a6470; --ink-soft:#9aa3ad; --line:#e9e6e4;
+  --blue:#a8c6e0; --blue-wash:#e6f0f9; --pink:#ecb8c2; --pink-wash:#fbecef;
+  --aqua:#b5dcd8; --sand:#ecd6b0;
+  --font:"Outfit","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-weight:300;position:relative;overflow-x:hidden;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 72px}
+.washes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.washes span{position:absolute;border-radius:50%;filter:url(#bleed) blur(14px);opacity:.75}
+.sea{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sea svg{position:absolute;fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.c-b{stroke:var(--blue)} .c-g{stroke:var(--pink)} .c-a{stroke:var(--aqua)} .c-s{stroke:var(--sand)}
+.float{animation:bob 8s ease-in-out infinite}.d2{animation-delay:-3s}.d3{animation-delay:-5.5s}
+@keyframes bob{50%{transform:translateY(-7px) rotate(3deg)}}
+.preview{position:relative;max-width:440px;margin:0 auto 18px;text-align:center;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+.card{position:relative;max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center}
+.eyebrow{font-size:11px;font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:var(--ink-soft)}
+h1{font-weight:200;font-size:clamp(42px,12vw,58px);line-height:1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1 .f{color:var(--pink)} h1 .m{color:var(--blue)} h1 .ou{font-size:.45em;color:var(--ink-soft);display:block;margin:6px 0;letter-spacing:.2em;text-transform:uppercase}
+.scene{position:relative;width:calc(100% + 32px);max-width:480px;aspect-ratio:1/1;margin-inline:-16px}
+.scene::before{content:"";position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle at 30% 35%,var(--blue-wash),transparent 60%),radial-gradient(circle at 72% 70%,var(--pink-wash),transparent 60%);filter:url(#bleed) blur(10px)}
+
+.scene img{position:relative;display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.95;-webkit-mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 78%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 14%,#000 86%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 78%,transparent);mask-composite:intersect}
+.text{display:flex;flex-direction:column;gap:14px;max-width:34ch}
+.text p{margin:0;font-size:17px;line-height:1.6}
+.text .q{font-size:20px;font-weight:200;color:var(--ink)}
+.text .q b{font-weight:300}
+.text .q .f{color:var(--pink)} .text .q .m{color:var(--blue)}
+.panel{width:100%;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:24px;padding:26px 22px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.details{display:grid;grid-template-columns:1fr 1px 1fr;gap:16px;align-items:center;width:100%}
+.details .sep{background:var(--line);height:100%}
+.big{font-size:34px;font-weight:200;line-height:1;font-variant-numeric:tabular-nums}
+.small{font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+.place{font-size:14px;line-height:1.65;max-width:32ch}
+.place strong{font-weight:400;font-size:16px;letter-spacing:.06em;display:block;margin-bottom:2px}
+.place a{display:inline-block;margin-top:8px;color:var(--ink-soft);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;text-underline-offset:4px}
+.wave{width:90px;height:12px;stroke:var(--pink);fill:none;stroke-width:1.2;stroke-linecap:round}
+form{display:flex;flex-direction:column;gap:18px;width:100%}
+label.q{font-size:20px;font-weight:200}
+input[type=text]{font:inherit;font-size:16px;text-align:center;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 4px;outline:none}
+input[type=text]:focus{border-bottom-color:var(--blue)}
+input::placeholder{color:var(--ink-soft)}
+.votes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vote{font:inherit;font-size:15px;color:var(--ink);border:1px solid transparent;border-radius:999px;padding:14px 8px;cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:2px;align-items:center}
+.vote small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.vote.girl{background:var(--pink-wash)} .vote.boy{background:var(--blue-wash)}
+.vote.girl[aria-pressed=true]{border-color:var(--pink);box-shadow:0 0 0 4px rgba(236,184,194,.22)}
+.vote.boy[aria-pressed=true]{border-color:var(--blue);box-shadow:0 0 0 4px rgba(168,198,224,.25)}
+.vote:focus-visible,.send:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.send:disabled{opacity:.6;cursor:wait}
+.send{font:inherit;font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--ink);background:linear-gradient(90deg,var(--pink-wash),var(--blue-wash));border:1px solid var(--line);border-radius:999px;padding:16px;cursor:pointer}
+.msg{font-size:13px;color:var(--ink-soft);margin:0}
+.msg:empty{display:none}
+.tally{width:100%;display:flex;flex-direction:column;gap:10px}
+.bar{display:grid;grid-template-columns:70px 1fr 28px;gap:10px;align-items:center;font-size:13px;font-variant-numeric:tabular-nums;text-align:left}
+.track{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.fill{height:100%;border-radius:999px;transition:width .6s}
+.fill.girl{background:var(--pink)} .fill.boy{background:var(--blue)}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="bleed" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="70" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <symbol id="star" viewBox="0 0 48 48"><path d="M24 4l5 13 14 1-11 9 4 14-12-8-12 8 4-14L5 18l14-1z"/><circle cx="24" cy="24" r="1.2"/></symbol>
+  <symbol id="shell" viewBox="0 0 48 48"><path d="M8 30C8 16 16 8 24 8s16 8 16 22l-6 6H14z"/><path d="M24 9v27M17 11l3 25M31 11l-3 25M11 19l7 17M37 19l-7 17"/><path d="M18 36l-2 4h16l-2-4"/></symbol>
+  <symbol id="fish" viewBox="0 0 64 36"><path d="M8 18c8-11 26-13 38 0-12 13-30 11-38 0z"/><path d="M46 18l12-9v18z"/><circle cx="18" cy="16" r="1.4"/><path d="M26 11c3 4 3 10 0 14"/></symbol>
+  <symbol id="whale" viewBox="0 0 80 48"><path d="M6 26c0-10 10-16 24-16 16 0 26 8 30 18 2-6 8-10 14-10-2 6-6 10-12 12 0 8-12 12-30 12C14 42 6 36 6 26z"/><circle cx="20" cy="24" r="1.4"/><path d="M14 32c4 3 10 3 14 0"/><path d="M28 10c0-4-2-6-4-8M28 10c0-4 2-6 4-8"/></symbol>
+  <symbol id="seahorse" viewBox="0 0 40 64"><path d="M24 8c-6-2-12 2-12 8 0 4 2 6 6 7-6 4-8 12-4 20 3 6 8 10 6 16-1 3-5 3-6 0"/><path d="M24 8c3 1 6 4 6 8 0 3-2 5-5 6l-7 1"/><path d="M12 16l-8-1"/><circle cx="21" cy="13" r="1.2"/><path d="M18 30c3 0 5 2 5 5M17 38c3 0 5 2 5 5"/></symbol>
+  <symbol id="weed" viewBox="0 0 30 80"><path d="M15 80c-6-12 6-18 0-30s6-18 0-30S15 4 15 2"/><path d="M8 80c-4-8 3-12 0-20"/><path d="M22 80c4-8-3-12 0-20"/></symbol>
+  <symbol id="bubbles" viewBox="0 0 30 50"><circle cx="15" cy="40" r="6"/><circle cx="8" cy="22" r="4"/><circle cx="19" cy="9" r="3"/></symbol>
+  <symbol id="waves" viewBox="0 0 120 20"><path d="M2 10c10-8 20-8 30 0s20 8 30 0 20-8 30 0 20 8 26 0"/></symbol>
+</svg>
+
+<div class="washes" aria-hidden="true">
+  <span style="left:-18%;top:-60px;width:70%;height:360px;background:var(--blue-wash)"></span>
+  <span style="right:-20%;top:120px;width:60%;height:300px;background:var(--pink-wash)"></span>
+  <span style="left:-22%;top:760px;width:65%;height:380px;background:var(--pink-wash)"></span>
+  <span style="right:-18%;top:1080px;width:62%;height:360px;background:var(--blue-wash)"></span>
+  <span style="left:-10%;bottom:-80px;width:60%;height:340px;background:var(--blue-wash)"></span>
+  <span style="right:-16%;bottom:-40px;width:60%;height:320px;background:var(--pink-wash)"></span>
+</div>
+
+<div class="sea" aria-hidden="true">
+  <svg class="c-b float" style="left:4%;top:96px;width:48px;height:27px"><use href="#fish"/></svg>
+  <svg class="c-a float d2" style="right:6%;top:46px;width:22px;height:38px"><use href="#bubbles"/></svg>
+  <svg class="c-g float d3" style="right:4%;top:190px;width:52px;height:32px"><use href="#whale"/></svg>
+  <svg class="c-b" style="left:2%;top:500px;width:96px;height:16px"><use href="#waves"/></svg>
+  <svg class="c-s float" style="left:3%;top:560px;width:34px;height:34px"><use href="#star"/></svg>
+  <svg class="c-a float d2" style="right:4%;top:860px;width:26px;height:44px"><use href="#seahorse"/></svg>
+  <svg class="c-g" style="left:1%;top:1060px;width:24px;height:66px"><use href="#weed"/></svg>
+  <svg class="c-b float d3" style="right:5%;top:1230px;width:44px;height:25px;transform:scaleX(-1)"><use href="#fish"/></svg>
+  <svg class="c-a float" style="left:5%;top:1400px;width:20px;height:34px"><use href="#bubbles"/></svg>
+  <svg class="c-g float d2" style="right:4%;top:1580px;width:34px;height:34px"><use href="#shell"/></svg>
+  <svg class="c-s" style="left:5%;bottom:36px;width:32px;height:32px"><use href="#star"/></svg>
+  <svg class="c-g" style="left:24%;bottom:20px;width:30px;height:30px"><use href="#shell"/></svg>
+  <svg class="c-a" style="right:24%;bottom:26px;width:22px;height:60px"><use href="#weed"/></svg>
+  <svg class="c-s" style="right:6%;bottom:34px;width:26px;height:26px"><use href="#star"/></svg>
+</div>
+
+
+<main class="card">
+  <div class="eyebrow">Chá Revelação</div>
+  <h1><span class="f">Menina</span><span class="ou">ou</span><span class="m">menino</span></h1>
+
+  <div class="scene">
+    <img src="aquarela.jpg" alt="Pintura em aquarela de uma cachorra preta e uma corgi sorrindo ao lado de um par de sapatinhos de tricô brancos">
+  </div>
+
+  <div class="text">
+    <p>Chegou a hora de revelar para a família e os amigos se é Maria ou Joaquim.</p>
+    <p class="q">Os papais e as irmãs já sabem, mas o que será? <b class="f">Menina</b> ou <b class="m">menino</b>?</p>
+  </div>
+
+  <section class="panel">
+    <div class="details">
+      <div><div class="big">24.10</div><div class="small">Sábado · 2026</div></div>
+      <div class="sep"></div>
+      <div><div class="big">16h</div><div class="small">Pontualmente</div></div>
+    </div>
+    <svg class="wave" viewBox="0 0 120 14" aria-hidden="true"><path d="M2 7c10-6 18-6 29 0s19 6 29 0 19-6 29 0 19 6 29 0"/></svg>
+    <div class="place">
+      <strong>Ateliê Neshamah</strong>
+      Av. Jerônimo Monteiro, 1577 · Centro<br>Vila Velha · ES · 29101-401<br>
+      <a href="https://www.google.com/maps/search/?api=1&query=Av.+Jer%C3%B4nimo+Monteiro%2C+1577%2C+Centro%2C+Vila+Velha+-+ES%2C+29101-401" target="_blank" rel="noopener">Abrir no mapa</a>
+    </div>
+  </section>
+
+  <section class="panel">
+    <form id="rsvp" novalidate>
+      <label class="q" for="nome">Confirme sua presença</label>
+      <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" maxlength="60">
+      <div class="votes" role="group" aria-label="Seu palpite">
+        <button type="button" class="vote girl" id="v-menina" data-v="menina" aria-pressed="false">Menina</button>
+        <button type="button" class="vote boy" id="v-menino" data-v="menino" aria-pressed="false">Menino</button>
+      </div>
+      <button type="submit" class="send" id="enviar">Confirmar</button>
+      <p class="msg" id="msg" aria-live="polite"></p>
+    </form>
+    <div class="tally" id="tally">
+      <div class="eyebrow">Palpites até agora</div>
+      <p class="msg" id="tally-msg">Carregando o placar…</p>
+      <div class="bar"><span>Menina</span><div class="track"><div class="fill girl" id="f-menina" style="width:0"></div></div><span id="n-menina">0</span></div>
+      <div class="bar"><span>Menino</span><div class="track"><div class="fill boy" id="f-menino" style="width:0"></div></div><span id="n-menino">0</span></div>
+    </div>
+  </section>
+</main>
+
+<script>
+// Cole aqui a URL do App da Web do Google Apps Script (termina em /exec)
+const SCRIPT_URL = "COLE_AQUI_A_URL_DO_APPS_SCRIPT";
+
+// Chama o Apps Script via JSONP (funciona em qualquer hospedagem estática, sem problema de CORS)
+function chamar(params){
+  return new Promise((resolve,reject)=>{
+    const cb='cb'+Date.now()+Math.floor(Math.random()*1e6);
+    const s=document.createElement('script');
+    const t=setTimeout(()=>{limpar();reject(new Error('timeout'))},15000);
+    function limpar(){clearTimeout(t);delete window[cb];s.remove()}
+    window[cb]=d=>{limpar();resolve(d)};
+    s.onerror=()=>{limpar();reject(new Error('rede'))};
+    s.src=SCRIPT_URL+'?'+new URLSearchParams({...params,callback:cb});
+    document.head.appendChild(s);
+  });
+}
+
+function mostrarPlacar(d){
+  const total=(d.menina||0)+(d.menino||0);
+  ['menina','menino'].forEach(k=>{
+    document.getElementById('n-'+k).textContent=d[k]||0;
+    document.getElementById('f-'+k).style.width=(total?(d[k]||0)/total*100:0)+'%';
+  });
+  document.getElementById('tally-msg').textContent=total?(total+(total===1?' palpite':' palpites')):'Seja a primeira pessoa a dar um palpite.';
+}
+
+const configurado=SCRIPT_URL.startsWith('https://');
+if(configurado){
+  chamar({action:'placar'}).then(mostrarPlacar).catch(()=>{document.getElementById('tally-msg').textContent='Não foi possível carregar o placar agora.'});
+}else{
+  document.getElementById('tally-msg').textContent='Placar ainda não conectado à planilha.';
+}
+
+let palpite=null;
+document.querySelectorAll('.vote').forEach(b=>b.addEventListener('click',()=>{
+  palpite=b.dataset.v;
+  document.querySelectorAll('.vote').forEach(x=>x.setAttribute('aria-pressed',x===b));
+}));
+document.getElementById('rsvp').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const nome=document.getElementById('nome').value.trim(), msg=document.getElementById('msg'), btn=document.getElementById('enviar');
+  if(!nome){msg.textContent='Escreva seu nome para confirmar.';return}
+  if(!palpite){msg.textContent='Escolha seu palpite: menina ou menino.';return}
+  if(!configurado){msg.textContent='A confirmação ainda não está conectada à planilha.';return}
+  btn.disabled=true; msg.textContent='Enviando…';
+  try{
+    const d=await chamar({action:'confirmar',nome,palpite});
+    if(!d.ok) throw new Error(d.erro||'erro');
+    mostrarPlacar(d);
+    msg.textContent='Obrigado, '+nome.split(' ')[0]+'! Sua presença está confirmada.';
+    document.getElementById('nome').value='';
+  }catch(err){
+    msg.textContent='Não foi possível enviar agora. Tente de novo em instantes.';
+  }finally{btn.disabled=false}
+});
+</script>
+
+</body>
+</html>
